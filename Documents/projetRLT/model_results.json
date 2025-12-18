@@ -1,0 +1,49 @@
+{
+    "datasets": [
+        "Boston Housing",
+        "Parkinson",
+        "Sonar",
+        "Concrete"
+    ],
+    "metrics": {
+        "Boston Housing": {
+            "classic_models": {
+                "RandomForest": 0.15,
+                "BART": 0.14,
+                "LinearRegression": 0.22
+            },
+            "rlt_models": [
+                {
+                    "k": 2,
+                    "muting": "none",
+                    "score": 0.13
+                },
+                {
+                    "k": 2,
+                    "muting": "moderate",
+                    "score": 0.12
+                },
+                {
+                    "k": 2,
+                    "muting": "aggressive",
+                    "score": 0.11
+                },
+                {
+                    "k": 3,
+                    "muting": "none",
+                    "score": 0.135
+                },
+                {
+                    "k": 3,
+                    "muting": "moderate",
+                    "score": 0.125
+                },
+                {
+                    "k": 3,
+                    "muting": "aggressive",
+                    "score": 0.115
+                }
+            ]
+        }
+    }
+}
