@@ -5,9 +5,10 @@ import tn.esprit.championnat.enums.Categorie;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
-@Table(name = "championnat")
-public class Championnat {
+public class Championnnat {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,13 +23,19 @@ public class Championnat {
 
     @Column(nullable = false)
     private Integer annee;
+    @OneToMany(mappedBy = "championnat", cascade = CascadeType.ALL)
+    private List<Course> courses;
+
+    @OneToOne(mappedBy = "championnat", cascade = CascadeType.ALL)
+    private DetailsChampionnat detailsChampionnat;
+
 
     // 🔹 Constructeur vide obligatoire pour JPA
-    public Championnat() {
+    public Championnnat() {
     }
 
     // 🔹 Constructeur utile
-    public Championnat(Categorie categorie, String libelleC, Integer annee) {
+    public Championnnat(Categorie categorie, String libelleC, Integer annee) {
         this.categorie = categorie;
         this.libelleC = libelleC;
         this.annee = annee;

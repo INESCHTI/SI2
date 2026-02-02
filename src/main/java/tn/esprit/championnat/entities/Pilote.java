@@ -2,6 +2,8 @@ package tn.esprit.championnat.entities;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "pilote")
 public class Pilote {
@@ -18,6 +20,15 @@ public class Pilote {
 
     @Column(nullable = false)
     private Integer classementGeneral;
+    @ManyToOne
+    @JoinColumn(name = "id_equipe")
+    private Equipe equipe;
+
+    @OneToMany(mappedBy = "pilote", cascade = CascadeType.ALL)
+    private List<Position> positions;
+
+    @OneToMany(mappedBy = "pilote", cascade = CascadeType.ALL)
+    private List<Contrat> contrats;
 
     public Pilote() {
     }

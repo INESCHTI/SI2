@@ -16,6 +16,16 @@ public class Position {
     @Column(nullable = false)
     private Integer nbPoints;
 
+    @ManyToOne
+    @JoinColumn(name = "id_course")
+    private Course course;
+
+    @ManyToOne
+    @JoinColumn(name = "id_pilote")
+    private Pilote pilote;
+
+
+
     public Position() {
     }
 

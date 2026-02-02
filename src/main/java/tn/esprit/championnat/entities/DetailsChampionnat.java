@@ -16,6 +16,11 @@ public class DetailsChampionnat {
     @Column(nullable = false)
     private String description;
 
+    @OneToOne
+    @JoinColumn(name = "id_championnat")
+    private Championnnat championnat;
+
+
     public DetailsChampionnat() {
     }
 

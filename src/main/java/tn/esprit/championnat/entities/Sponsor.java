@@ -2,6 +2,8 @@ package tn.esprit.championnat.entities;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "sponsor")
 public class Sponsor {
@@ -21,6 +23,9 @@ public class Sponsor {
 
     @Column(nullable = false)
     private Boolean bloquerContrat;
+    @OneToMany(mappedBy = "sponsor", cascade = CascadeType.ALL)
+    private List<Contrat> contrats;
+
 
     public Sponsor() {
     }

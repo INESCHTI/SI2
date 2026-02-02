@@ -2,6 +2,7 @@ package tn.esprit.championnat.entities;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "course")
@@ -16,6 +17,13 @@ public class Course {
 
     @Column(nullable = false)
     private LocalDate dateCourse;
+    @ManyToOne
+    @JoinColumn(name = "id_championnat")
+    private Championnnat championnat;
+
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
+    private List<Position> positions;
+
 
     public Course() {
     }
