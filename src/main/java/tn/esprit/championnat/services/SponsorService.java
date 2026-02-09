@@ -44,6 +44,7 @@ private SponsorRepository sponsorRepository ;
         return sponsorRepository.findAll();
     }
 
+
     @Override
     public Sponsor recupererSponsor(Long idSponsor) {
         return sponsorRepository.findById(idSponsor).orElse(null);
