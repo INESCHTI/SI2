@@ -1,4 +1,4 @@
-package tn.esprit.championnat.enums;
+package tn.esprit.championnat.entities;
 
 public enum Categorie {
     FORMULA1,

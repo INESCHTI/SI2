@@ -1,7 +1,6 @@
 package tn.esprit.championnat.entities;
 
 import jakarta.persistence.*;
-import tn.esprit.championnat.enums.Categorie;
 
 import java.util.List;
 
