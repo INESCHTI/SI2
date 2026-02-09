@@ -1,6 +1,6 @@
 package tn.esprit.championnat.enums;
 
 public enum Categorie {
-    FORMULA,
+    FORMULA1,
     MOTOGP
 }

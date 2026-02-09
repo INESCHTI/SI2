@@ -10,46 +10,12 @@ public class DetailsChampionnat {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idDetailChamp;
 
-    @Column(nullable = false)
     private String code;
-
-    @Column(nullable = false)
     private String description;
 
     @OneToOne
-    @JoinColumn(name = "id_championnat")
-    private Championnnat championnat;
+    @JoinColumn(name = "id_championnat", unique = true)
+    private Championnnat championnnat;
 
-
-    public DetailsChampionnat() {
-    }
-
-    public DetailsChampionnat(String code, String description) {
-        this.code = code;
-        this.description = description;
-    }
-
-    public Long getIdDetailChamp() {
-        return idDetailChamp;
-    }
-
-    public void setIdDetailChamp(Long idDetailChamp) {
-        this.idDetailChamp = idDetailChamp;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
+    public DetailsChampionnat() {}
 }
