@@ -24,6 +24,7 @@ private SponsorRepository sponsorRepository ;
             s.setDateCreation(LocalDate.now());
             s.setArchived(false);
             s.setBloquerContrat(false);
+          //  sponsorRepository.save(s);
         });
         return sponsorRepository.saveAll(sponsors);
     }

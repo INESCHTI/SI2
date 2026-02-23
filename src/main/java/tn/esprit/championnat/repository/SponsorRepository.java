@@ -10,3 +10,4 @@ public interface SponsorRepository extends JpaRepository<Sponsor,Long> {
 
 
 }
+
