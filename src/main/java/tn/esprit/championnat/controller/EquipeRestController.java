@@ -1,19 +1,22 @@
-package tn.esprit.championnat.Controllers;
+package tn.esprit.championnat.controller;
 
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.championnat.entities.Equipe;
 import tn.esprit.championnat.services.IEquipeService;
 
 @RestController
+@AllArgsConstructor
 @RequestMapping("/equipe")
-@RequiredArgsConstructor
-public class EquipeController {
+public class EquipeRestController {
 
     private final IEquipeService equipeService;
 
+    // Ajouter une équipe
+    // POST http://localhost:8089/championnat/equipe/add
     @PostMapping("/add")
-    public Equipe addEquipe(@RequestBody Equipe equipe) {
+    public Equipe ajouterEquipe(@RequestBody Equipe equipe) {
         return equipeService.ajouterEquipe(equipe);
     }
+
 }

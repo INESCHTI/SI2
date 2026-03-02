@@ -4,4 +4,5 @@ import tn.esprit.championnat.entities.Equipe;
 
 public interface IEquipeService {
     Equipe ajouterEquipe(Equipe equipe);
+
 }

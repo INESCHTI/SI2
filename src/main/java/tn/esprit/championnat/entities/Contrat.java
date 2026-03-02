@@ -1,26 +1,34 @@
 package tn.esprit.championnat.entities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+
 
 @Entity
-@Table(name = "contrat")
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+
 public class Contrat {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idContrat;
+    Long idContrat;
 
-    private Float montant;
-    private String annee;
-    private Boolean archived;
-
+    Float montant;
+    String annee;
+    Boolean archived;
     @ManyToOne
-    @JoinColumn(name = "id_sponsor")
-    private Sponsor sponsor;
-
-    @ManyToOne
-    @JoinColumn(name = "id_equipe")
+    @JoinColumn(name = "equipe_id_equipe")
     private Equipe equipe;
 
-    public Contrat() {}
+    @ManyToOne
+    @JoinColumn(name = "sponsor_id_sponsor")
+    private Sponsor sponsor;
+
 }

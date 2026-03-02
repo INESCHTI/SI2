@@ -3,14 +3,16 @@ package tn.esprit.championnat.services;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import tn.esprit.championnat.entities.Sponsor;
-import tn.esprit.championnat.repository.SponsorRepository;
+import tn.esprit.championnat.repositories.SponsorRepository;
 
 import java.time.LocalDate;
 import java.util.List;
+
+
 @Service
 @AllArgsConstructor
-public class SponsorService implements ISponsorService{
-private SponsorRepository sponsorRepository ;
+public class SponsorServiceImplementation implements ISponsorService{
+    private SponsorRepository sponsorRepository;
 
 
     @Override
@@ -27,11 +29,9 @@ private SponsorRepository sponsorRepository ;
             s.setDateCreation(LocalDate.now());
             s.setArchived(false);
             s.setBloquerContrat(false);
-          //  sponsorRepository.save(s);
         });
         return sponsorRepository.saveAll(sponsors);
     }
-
     @Override
     public Sponsor modifierSponsor(Sponsor sponsor) {
         sponsor.setDateDerniereModification(LocalDate.now());
@@ -46,8 +46,8 @@ private SponsorRepository sponsorRepository ;
     @Override
     public List<Sponsor> listSponsors() {
         return sponsorRepository.findAll();
-    }
 
+    }
 
     @Override
     public Sponsor recupererSponsor(Long idSponsor) {
@@ -57,10 +57,11 @@ private SponsorRepository sponsorRepository ;
     @Override
     public Boolean archiverSponsor(Long idSponsor) {
         Sponsor sponsor = sponsorRepository.findById(idSponsor).orElse(null);
-        if (sponsor == null) return false;
-        sponsor.setArchived(true);
-        sponsorRepository.save(sponsor);
-        return true;
+        if (sponsor != null) {
+            sponsor.setArchived(true);
+            sponsorRepository.save(sponsor);
+            return true;
+        }
+        return false;
     }
-
 }

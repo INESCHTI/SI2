@@ -1,26 +1,37 @@
 package tn.esprit.championnat.entities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDate;
 import java.util.List;
 
+
 @Entity
-@Table(name = "course")
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+
 public class Course {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idCourse;
+    Long idCourse;
 
-    private String emplacement;
-    private LocalDate dateCourse;
+    String emplacement;
+    LocalDate dateCourse;
 
     @ManyToMany(mappedBy = "courses")
-    private List<Championnnat> championnnats;
+    private List<Championnat> championnats;
 
-    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "course")
     private List<Position> positions;
 
-    public Course() {}
+
+
 }
+

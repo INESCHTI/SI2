@@ -1,26 +1,36 @@
 package tn.esprit.championnat.entities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.List;
 
 @Entity
-@Table(name = "equipe")
+
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Equipe {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idEquipe;
+    Long idEquipe;
 
-    private String libelle;
-    private Integer nbPointsTotal;
-    private Integer classementGeneral;
+    String libelle;
+    Integer nbPointsTotal;
+    Integer classementGeneral;
 
-    @OneToMany(mappedBy = "equipe", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "equipe")
     private List<Pilote> pilotes;
 
-    @OneToMany(mappedBy = "equipe", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "equipe")
     private List<Contrat> contrats;
 
-    public Equipe() {}
+
+
 }
+

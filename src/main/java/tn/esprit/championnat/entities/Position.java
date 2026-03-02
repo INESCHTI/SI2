@@ -1,9 +1,17 @@
 package tn.esprit.championnat.entities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 
 @Entity
-@Table(name = "position")
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Position {
 
     @Id
@@ -14,12 +22,10 @@ public class Position {
     private Integer nbPoints;
 
     @ManyToOne
-    @JoinColumn(name = "id_course")
-    private Course course;
+    Course course;
 
     @ManyToOne
-    @JoinColumn(name = "id_pilote")
-    private Pilote pilote;
+    Pilote pilote;
 
-    public Position() {}
+
 }

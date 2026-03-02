@@ -1,11 +1,18 @@
 package tn.esprit.championnat.entities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.List;
 
 @Entity
-@Table(name = "pilote")
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Pilote {
 
     @Id
@@ -16,15 +23,12 @@ public class Pilote {
     private Integer nbPointsTotal;
     private Integer classementGeneral;
 
-    @Enumerated(EnumType.STRING)
-    private Categorie categorie;
-
     @ManyToOne
-    @JoinColumn(name = "id_equipe")
-    private Equipe equipe;
+    Equipe equipe;
 
-    @OneToMany(mappedBy = "pilote", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "pilote")
     private List<Position> positions;
 
-    public Pilote() {}
+
 }
+
