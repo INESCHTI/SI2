@@ -5,6 +5,6 @@ import tn.esprit.championnat.entities.Pilote;
 public interface IPiloteService {
     String  addPilote(Pilote p);
     void deleteAllPilotes();
-
+    Pilote affecterPiloteAEquipe(String libP, String libE);
 
 }

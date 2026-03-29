@@ -3,7 +3,9 @@ package tn.esprit.championnat.services;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import tn.esprit.championnat.entities.Equipe;
 import tn.esprit.championnat.entities.Pilote;
+import tn.esprit.championnat.repositories.EquipeRepository;
 import tn.esprit.championnat.repositories.PiloteRepository;
 
 import java.util.List;
@@ -28,6 +30,19 @@ public class PiloteServiceImplementation implements IPiloteService {
         piloteRepository.deleteAll();
     }
 
+    private EquipeRepository equipeRepository;
+
+    @Override
+    public Pilote affecterPiloteAEquipe(String libP, String libE) {
+
+        Pilote p = piloteRepository.findByLibelleP(libP);
+        Equipe e = equipeRepository.findByLibelle(libE);
+
+        if (p == null || e == null) return null;
+
+        p.setEquipe(e);
+        return piloteRepository.save(p);
+    }    }
 
 
-}
+
