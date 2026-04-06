@@ -12,4 +12,5 @@ public interface ISponsorService {
     List<Sponsor> listSponsors();
     Sponsor recupererSponsor(Long idSponsor);
     Boolean archiverSponsor(Long idSponsor);
+    Float pourcentageBudgetAnnuelConsomme(Long idSponsor, String annee);
 }

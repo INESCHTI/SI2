@@ -22,7 +22,8 @@ public class Pilote {
     private String libelleP;
     private Integer nbPointsTotal;
     private Integer classementGeneral;
-
+    @Enumerated(EnumType.STRING)
+    private Categorie categorie;
     @ManyToOne
     Equipe equipe;
 
