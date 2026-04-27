@@ -19,4 +19,9 @@ public interface ContratRepository extends JpaRepository<Contrat, Long> {
 
      Float sommeMontantsContratsSponsorParAnnee(@Param("idSponsor") Long idSponsor,
                                                       @Param("annee") String annee);
+
+    @Query("select c.annee, coalesce(sum(c.montant), 0) " +
+            "from Contrat c where c.equipe.libelle = :libelleEquipe " +
+            "group by c.annee order by c.annee")
+    List<Object[]> historiqueMontantsParAnnee(@Param("libelleEquipe") String libelleEquipe);
 }

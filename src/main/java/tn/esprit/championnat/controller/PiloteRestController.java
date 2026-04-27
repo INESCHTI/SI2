@@ -3,11 +3,13 @@ package tn.esprit.championnat.controller;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.championnat.entities.Pilote;
 import tn.esprit.championnat.services.IPiloteService;
 import tn.esprit.championnat.services.PiloteServiceImplementation;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -42,4 +44,11 @@ public class PiloteRestController {
         piloteService.deleteAllPilotes();
     }
 
+    // GET http://localhost:8089/championnat/pilote/moyenne-positions?startDate=2024-01-01&endDate=2024-12-31&libelleP=max verstappen
+    @GetMapping("/moyenne-positions")
+    public Float moyennePositionsEntreDeuxDate(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
+                                               @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate,
+                                               @RequestParam String libelleP) {
+        return piloteService.moyennePositionsEntreDeuxDate(startDate, endDate, libelleP);
+    }
 }
